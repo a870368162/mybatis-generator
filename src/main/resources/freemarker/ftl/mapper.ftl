@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${daoUrl}.${entityName}Mapper">
 	<resultMap id="BaseResultMap" type="${entityUrl}.${entityName}">
-	<#list cis as ci>
 	<id column="id" property="id" jdbcType="BIGINT" />
+	<#list cis as ci>
 	<result column="${ci.column}" property="${ci.property}" jdbcType="${ci.jdbcType?upper_case}" />
 	</#list>
 	</resultMap>
