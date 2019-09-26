@@ -18,9 +18,10 @@ import com.base.common.pagination.Page;
 import com.base.common.exceptions.ApplicationException;
 
 /**
- * ${entityComment}——SERVICEIMPL
+ * ${entityComment}——SERVICEIMPL层
  *
  * @author	${author}
+ * @create	${createTime}
  */
 @Service
 public class ${entityName}ServiceImpl implements ${entityName}Service {

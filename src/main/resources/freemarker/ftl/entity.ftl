@@ -14,10 +14,10 @@ import com.base.common.utils.DateUtils;
 import java.math.BigDecimal;
 
 /**
- * ${entityComment}
+ * ${entityComment} 实体类
  *
  * @author  ${author}
- *    
+ * @create	${createTime}
  */
 @Data
 @Builder

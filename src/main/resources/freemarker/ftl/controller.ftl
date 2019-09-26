@@ -23,7 +23,7 @@ import com.base.common.pagination.Page;
  * ${entityComment}接口层
  *
  * @author	${author}
- *    
+ * @create	${createTime}
  */
 @Api(description = "${entityComment}",value="${entityComment}" )
 @RestController
