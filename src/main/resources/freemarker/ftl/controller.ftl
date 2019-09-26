@@ -34,13 +34,12 @@ public class ${entityName}Controller {
 	private ${entityName}Service ${objectName}Service;
 
 
-	@GetMapping("/${entityName}/{id}")
-	@ApiOperation(value = "获取${entityComment}信息", notes = "获取${entityComment}信息[${objectName}]")
-	@ApiImplicitParam(name = "id", value = "${entityComment}id", required = true, dataType = "${idType}")
-	public String get${entityName}ById(@PathVariable("id")${idType} id){
+	@PostMapping("/${entityName}")
+	@ApiOperation(value = "新增或者修改${entityComment}", notes = "添加不需要传id，修改需要传id")
+	public String saveOrUpdate(@RequestBody ${entityName} ${objectName}){
 		try {
-			${entityName} result=this.${objectName}Service.get${entityName}ById(id);
-			return JSONObject.toJSONString(SingleResult.builder().data(result).build());
+			this.${objectName}Service.saveOrUpdate(${objectName});
+			return JSONObject.toJSONString(SingleResult.createSuccessResult());
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			return JSONObject.toJSONString(SingleResult.createFailedResult(e.getMessage()));
@@ -48,12 +47,13 @@ public class ${entityName}Controller {
 	}
 
 
-	@PostMapping("/${entityName}")
-	@ApiOperation(value = "添加或者修改${entityComment}", notes = "添加不需要传id，修改需要传id")
-	public String saveOrUpdate(@RequestBody ${entityName} ${objectName}){
+	@GetMapping("/${entityName}/{id}")
+	@ApiOperation(value = "获取${entityComment}信息", notes = "获取${entityComment}信息[${objectName}]")
+	@ApiImplicitParam(name = "id", value = "${entityComment}id", required = true, dataType = "${idType}")
+	public String get${entityName}ById(@PathVariable("id")${idType} id){
 		try {
-			this.${objectName}Service.saveOrUpdate(${objectName});
-			return JSONObject.toJSONString(SingleResult.createSuccessResult());
+			${entityName} result=this.${objectName}Service.get${entityName}ById(id);
+			return JSONObject.toJSONString(SingleResult.builder().data(result).build());
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			return JSONObject.toJSONString(SingleResult.createFailedResult(e.getMessage()));
