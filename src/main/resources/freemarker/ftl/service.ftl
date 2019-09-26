@@ -9,14 +9,6 @@ import com.base.common.pagination.Page;
  * @create	${createTime}
  */
 public interface ${entityName}Service {
-	
-	/**
-	 * 根据id查询${entityComment}对象
-	 *
-	 * @param   id：${entityComment}的id
-	 * @return  ${entityComment}对象
-	 */
-	${entityName} get${entityName}ById(${idType} id);
 
 	/**
   	 * 新增或者修改${entityComment}对象
@@ -31,7 +23,7 @@ public interface ${entityName}Service {
  	 *
 	 * @param   ${objectName}：${entityComment}对象
 	 * @return  ${entityComment}对象的id
-	*/
+	 */
 	Long insert${entityName}(${entityName} ${objectName});
 
 	/**
@@ -39,8 +31,16 @@ public interface ${entityName}Service {
  	 *
 	 * @param   ${objectName}：${entityComment}对象
 	 * @return  ${entityComment}对象的id
-	*/
+	 */
 	Long update${entityName}(${entityName} ${objectName});
+
+	/**
+	 * 根据id查询${entityComment}对象
+	 *
+	 * @param   id：${entityComment}的id
+	 * @return  ${entityComment}对象
+	 */
+	${entityName} get${entityName}ById(${idType} id);
 	
 	/**
 	 * 分页查询${entityComment}对象

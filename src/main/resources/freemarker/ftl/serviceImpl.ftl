@@ -33,16 +33,6 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 	private SerialClient serialClient;
 
 	@Override
-	public ${entityName} get${entityName}ById(${idType} id) {
-		try {
-			AssertUlit.isEmpty(id, "id不能为空");
-			return ${objectName}Mapper.selectByPrimaryKey(id);
-		} catch (Exception e) {
-			throw new ApplicationException(e);
-		}
-	}
-
-	@Override
 	public Long saveOrUpdate(${entityName} ${objectName}) {
 		try {
 			Assert.notNull(${objectName}, "对象为空.");
@@ -78,6 +68,16 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 			${objectName}.setUpdateTime(DateUtils.getCurrentDateTime());
 			this.${objectName}Mapper.updateByPrimaryKeySelective(${objectName});
 			return ${objectName}.getId();
+		} catch (Exception e) {
+			throw new ApplicationException(e);
+		}
+	}
+
+	@Override
+	public ${entityName} get${entityName}ById(${idType} id) {
+		try {
+			AssertUlit.isEmpty(id, "id不能为空");
+			return ${objectName}Mapper.selectByPrimaryKey(id);
 		} catch (Exception e) {
 			throw new ApplicationException(e);
 		}
