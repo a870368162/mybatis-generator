@@ -36,8 +36,8 @@ public class ${entityName} implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateUtils.DATE_TIME_FORMAT, timezone = "GMT+8")
     @JSONField(format = DateUtils.DATE_TIME_FORMAT)
 	<#else>
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateUtils.DATE_TIME_FORMAT, timezone = "GMT+8")
+    @JSONField(format = DateUtils.DATE_TIME_FORMAT)
 	</#if>
 	</#if>
 	@ApiModelProperty(name = "${ci.property}" , value = "${ci.comment}")
