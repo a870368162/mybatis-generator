@@ -75,7 +75,7 @@ public class ${entityName}Controller {
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "order", required = false) String order){
 		try {
-			${entityName}VO vo = OrderVO.builder().build();
+			${entityName}VO vo = ${entityName}VO.builder().build();
 			vo.setOrderBy(sort, order);
 			vo.gotoPagination(page, rows);
 			Page<${entityName}> result = this.${objectName}Service.get${entityName}BySearch(vo);
