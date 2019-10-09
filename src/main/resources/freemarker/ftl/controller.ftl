@@ -35,7 +35,7 @@ public class ${entityName}Controller {
 	private ${entityName}Service ${objectName}Service;
 
 
-	@PostMapping("/${entityName}")
+	@PostMapping("/${objectName}")
 	@ApiOperation(value = "新增或者修改${entityComment}", notes = "添加不需要传id，修改需要传id")
 	public String saveOrUpdate(@RequestBody ${entityName} ${objectName}){
 		try {
@@ -48,7 +48,7 @@ public class ${entityName}Controller {
 	}
 
 
-	@GetMapping("/${entityName}/{id}")
+	@GetMapping("/${objectName}/{id}")
 	@ApiOperation(value = "获取${entityComment}信息", notes = "获取${entityComment}信息[${objectName}]")
 	@ApiImplicitParam(name = "id", value = "${entityComment}id", required = true, dataType = "${idType}")
 	public String get${entityName}ById(@PathVariable("id")${idType} id){
@@ -62,7 +62,7 @@ public class ${entityName}Controller {
 	}
 
 
-	@GetMapping("/${entityName}")
+	@GetMapping("/${objectName}")
 	@ApiOperation(value = "分页查询", notes = "分页查询返回对象[PageInfo<${entityName}>]")
 	@ApiImplicitParams({
         @ApiImplicitParam(name = "page", value = "当前页", dataType = "int"),
