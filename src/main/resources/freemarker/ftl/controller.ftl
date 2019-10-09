@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import ${entityUrl}.${entityName};
+import ${voUrl}.${entityName}VO;
 import ${serviceUrl}.${entityName}Service;
 
 import io.swagger.annotations.Api;
@@ -75,7 +76,7 @@ public class ${entityName}Controller {
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "order", required = false) String order){
 		try {
-			${entityName}VO vo = OrderVO.builder().build();
+			${entityName}VO vo = ${entityName}VO.builder().build();
 			vo.setOrderBy(sort, order);
 			vo.gotoPagination(page, rows);
 			Page<${entityName}> result = this.${objectName}Service.get${entityName}BySearch(vo);

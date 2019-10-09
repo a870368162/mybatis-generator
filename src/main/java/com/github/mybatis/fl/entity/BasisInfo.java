@@ -1,11 +1,11 @@
 package com.github.mybatis.fl.entity;
 
-import java.io.Serializable;
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Copyright: Copyright (c) 2019
@@ -69,6 +69,8 @@ public class BasisInfo implements Serializable {
     private String idJdbcType;
 
     private String swaggerConfigUrl;
+
+    private String voUrl;
 
     private List<PropertyInfo> cis;
 

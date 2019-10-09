@@ -1,4 +1,4 @@
-package com.github.mybatis.fl.test;
+package com.usf.order.util;
 
 import com.github.mybatis.fl.entity.BasisInfo;
 import com.github.mybatis.fl.util.EntityInfoUtil;
@@ -8,38 +8,36 @@ import com.github.mybatis.fl.util.MySqlToJavaUtil;
 import java.sql.SQLException;
 import java.util.Date;
 
+
 /**
- * Copyright: Copyright (c) 2019
+ * 自动生成工具
  *
- * <p>
- * 说明： 自动生成工具
- * </P>
- * <p>
- * </P>
+ * @author zxf
+ * @create 2019-09-25 14:12
  */
 class MyGenerator {
     // 基础信息：项目名、作者、版本
     public static final String PROJECT = "order-service";
-    public static final String AUTHOR = "zengxufeng";
+    public static final String AUTHOR = "zxf";
     public static final String VERSION = "V1.0";
     // 数据库连接信息：连接URL、用户名、秘密、数据库名
-    public static final String URL = "jdbc:mysql://127.0.0.1:3306/usf_order?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=true&serverTimezone=UTC";
+    public static final String URL = "jdbc:mysql://localhost:3306/platform?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=true&serverTimezone=UTC";
     public static final String NAME = "root";
     public static final String PASS = "123456";
-    public static final String DATABASE = "usf_order";
-    // 类信息：类名、对象名（一般是【类名】的首字母小些）、类说明、时间
-    public static final String CLASSNAME = "Order";
-    public static final String TABLE = "order";
+    public static final String DATABASE = "platform";
+    // 类信息：类名、对象名（一般是【类】的首字母小些）、类说明、时间
+    public static final String CLASSNAME = "Sales";
+    public static final String TABLE = "usf_sales";
     public static final String CLASSCOMMENT = "订单";
     public static final String TIME = "2019年9月25日";
-    public static final String AGILE = new Date().getTime() + "";
+    public static final String AGILE = new Date().getTime()+ "";
     // 路径信息，分开路径方便聚合工程项目，微服务项目
-    public static final String ENTITY_URL = "com.usf.demo.model";
-    public static final String DAO_URL = "com.usf.demo.mapper";
-    public static final String XML_URL = "com.usf.demo.impl";
-    public static final String SERVICE_URL = "com.usf.demo.service";
-    public static final String SERVICE_IMPL_URL = "com.usf.demo.impl";
-    public static final String CONTROLLER_URL = "com.usf.demo.rest";
+    public static final String ENTITY_URL = "com.buybit.wm.entity";
+    public static final String DAO_URL = "com.buybit.wm.dao";
+    public static final String XML_URL = "com.buybit.wm.dao.impl";
+    public static final String SERVICE_URL = "com.buybit.wm.service";
+    public static final String SERVICE_IMPL_URL = "com.buybit.wm.service.impl";
+    public static final String CONTROLLER_URL = "com.buybit.wm.web";
 
     public static void main(String[] args) {
         BasisInfo bi = new BasisInfo(PROJECT, AUTHOR, VERSION, URL, NAME, PASS, DATABASE, TIME, AGILE, ENTITY_URL,
@@ -50,7 +48,7 @@ class MyGenerator {
         bi.setEntityComment(CLASSCOMMENT);
         try {
             bi = EntityInfoUtil.getInfo(bi);
-            String fileUrl = "E:\\a_item_work\\wallet\\wallet-manage\\wallet-manage-web\\src\\main\\java\\";// 生成文件存放位置
+            String fileUrl = "M:\\IDEA-workspace\\usf-shop\\e-order\\order-service\\src\\main\\java\\";// 生成文件存放位置
             String aa1 = Generator.createEntity(fileUrl, bi).toString();
 
             String aa2 = Generator.createDao(fileUrl, bi).toString();
@@ -69,7 +67,7 @@ class MyGenerator {
             System.out.println(aa5);
             System.out.println(aa6);
 
-            // System.out.println(aa7);
+            //System.out.println(aa7);
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ${entityUrl}.${entityName};
+import ${voUrl}.${entityName}VO;
 import ${daoUrl}.${entityName}Mapper;
 import ${serviceUrl}.${entityName}Service;
 import com.base.common.utils.NumberUtils;
@@ -54,6 +55,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 			Assert.notNull(${objectName}, "对象不能为空");
 			AssertUlit.isEmpty(${objectName}.getId(), "id不能为空");
 			${objectName}.create();
+			${objectName}.enable();
 			this.${objectName}Mapper.insertSelective(${objectName});
 			return ${objectName}.getId();
 		} catch (Exception e) {

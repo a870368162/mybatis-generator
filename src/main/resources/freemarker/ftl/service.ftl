@@ -1,6 +1,7 @@
 package ${serviceUrl};
 
 import ${entityUrl}.${entityName};
+import ${voUrl}.${entityName}VO;
 import com.base.common.pagination.Page;
 /**
  * ${entityComment}——SERVICE层

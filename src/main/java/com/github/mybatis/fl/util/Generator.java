@@ -1,10 +1,10 @@
 package com.github.mybatis.fl.util;
 
-import java.util.List;
-
 import com.github.mybatis.fl.entity.BasisInfo;
 import com.github.mybatis.fl.entity.JsonResult;
 import com.github.mybatis.fl.entity.PropertyInfo;
+
+import java.util.List;
 
 /**
  * Copyright: Copyright (c) 2019
@@ -28,6 +28,7 @@ public class Generator {
     public static final String SERVICE_IMPL = "serviceImpl";
     public static final String CONTROLLER = "controller";
     public static final String SWAGGER_CONFIG = "swaggerConfig";
+    public static final String VO = "vo";
 
 
     //①创建实体类
@@ -73,6 +74,12 @@ public class Generator {
         return FreemarkerUtil.createFile(bi, "controller.ftl", fileUrl);
     }
 
+    //⑥创建vo
+    public static JsonResult createVo(String url, BasisInfo bi) {
+        String fileUrl = getGeneratorFileUrl(url, bi.getVoUrl(), bi.getEntityName(), VO);
+        return FreemarkerUtil.createFile(bi, "vo.ftl", fileUrl);
+    }
+
     //⑧创建CONTROLLER
     public static JsonResult createSwaggerConfig(String url, BasisInfo bi) {
         String fileUrl = getGeneratorFileUrl(url, bi.getSwaggerConfigUrl(), "Swagger", SWAGGER_CONFIG);
@@ -93,6 +100,8 @@ public class Generator {
             return url + pageToUrl(packageUrl) + entityName + "ServiceImpl.java";
         } else if (type.equals("controller")) {
             return url + pageToUrl(packageUrl) + entityName + "Controller.java";
+        }else if(type.equals("vo")){
+            return url + pageToUrl(packageUrl) + entityName + "VO.java";
         }
         return null;
     }
