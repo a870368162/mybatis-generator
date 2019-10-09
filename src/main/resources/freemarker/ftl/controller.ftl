@@ -26,7 +26,7 @@ import com.base.common.pagination.Page;
  * @author	${author}
  * @create	${createTime}
  */
-@Api(description = "${entityComment}",value="${entityComment}" )
+@Api(tags = {"${entityName}Controller"})
 @RestController
 @Slf4j
 public class ${entityName}Controller {
