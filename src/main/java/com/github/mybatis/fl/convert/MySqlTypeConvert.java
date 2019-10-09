@@ -49,27 +49,23 @@ public class MySqlTypeConvert implements ITypeConvert {
                 case ONLY_DATE:
                     return DbColumnType.DATE;
                 case SQL_PACK:
-                    switch (t) {
-                        case "date":
-                            return DbColumnType.DATE_SQL;
-                        case "time":
-                            return DbColumnType.TIME;
-                        case "year":
-                            return DbColumnType.DATE_SQL;
-                        default:
-                            return DbColumnType.TIMESTAMP;
+                    if ("date".equals(t)) {
+                        return DbColumnType.DATE_SQL;
+                    } else if ("time".equals(t)) {
+                        return DbColumnType.TIME;
+                    } else if ("year".equals(t)) {
+                        return DbColumnType.DATE_SQL;
                     }
+                    return DbColumnType.TIMESTAMP;
                 case TIME_PACK:
-                    switch (t) {
-                        case "date":
-                            return DbColumnType.LOCAL_DATE;
-                        case "time":
-                            return DbColumnType.LOCAL_TIME;
-                        case "year":
-                            return DbColumnType.YEAR;
-                        default:
-                            return DbColumnType.LOCAL_DATE_TIME;
+                    if ("date".equals(t)) {
+                        return DbColumnType.LOCAL_DATE;
+                    } else if ("time".equals(t)) {
+                        return DbColumnType.LOCAL_TIME;
+                    } else if ("year".equals(t)) {
+                        return DbColumnType.YEAR;
                     }
+                    return DbColumnType.LOCAL_DATE_TIME;
             }
         }
         return DbColumnType.STRING;
