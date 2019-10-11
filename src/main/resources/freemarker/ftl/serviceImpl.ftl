@@ -86,7 +86,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 	}
 
 	@Override
-	public Page<${entityName}> get${entityName}BySearch(${entityName}VO vo) {
+	public Page<${entityName}> find${entityName}BySearch(${entityName}VO vo) {
 		// TODO Auto-generated method stub
 		try {
 			Page<${entityName}> result = new Page<>();

@@ -49,5 +49,5 @@ public interface ${entityName}Service {
 	 * @param   vo：${entityName}VO
 	 * @return  ${entityComment}的分页集合
 	 */
-	Page<${entityName}> get${entityName}BySearch(${entityName}VO vo);
+	Page<${entityName}> find${entityName}BySearch(${entityName}VO vo);
 }

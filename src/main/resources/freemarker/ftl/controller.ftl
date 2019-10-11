@@ -70,7 +70,7 @@ public class ${entityName}Controller {
 		@ApiImplicitParam(name = "sort", value = "排序规则", dataType = "String"),
 		@ApiImplicitParam(name = "order", value = "排序名称", dataType = "String")
     })
-	public String get${entityName}BySearch(
+	public String find${entityName}BySearch(
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "rows", required = false) Integer rows,
 			@RequestParam(value = "sort", required = false) String sort,
@@ -79,7 +79,7 @@ public class ${entityName}Controller {
 			${entityName}VO vo = ${entityName}VO.builder().build();
 			vo.setOrderBy(sort, order);
 			vo.gotoPagination(page, rows);
-			Page<${entityName}> result = this.${objectName}Service.get${entityName}BySearch(vo);
+			Page<${entityName}> result = this.${objectName}Service.find${entityName}BySearch(vo);
 			return JSONObject.toJSONString(SingleResult.builder().data(result).build());
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
