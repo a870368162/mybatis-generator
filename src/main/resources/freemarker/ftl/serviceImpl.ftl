@@ -67,6 +67,8 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 	public Long update${entityName}(${entityName} ${objectName}) {
 		try {
 			AssertUlit.isEmpty(${objectName}.getId(), "id不能为空");
+			${entityName} record = this.${objectName}Mapper.selectByPrimaryKey(${objectName}.getId());
+			Assert.notNull(record, "对象为空,无法修改");
 			${objectName}.setUpdateTime(DateUtils.getCurrentDateTime());
 			this.${objectName}Mapper.updateByPrimaryKeySelective(${objectName});
 			return ${objectName}.getId();

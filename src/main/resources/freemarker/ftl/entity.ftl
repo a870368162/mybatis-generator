@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import com.alibaba.fastjson.annotation.JSONField;
 
 /**
- * ${entityComment} 实体类
+ * ${entityComment}实体类
  *
  * @author  ${author}
  * @create	${createTime}
