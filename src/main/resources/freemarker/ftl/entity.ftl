@@ -6,7 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.swagger.annotations.ApiModelProperty;
-import com.base.common.enums.Status;
 import lombok.Data;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -48,16 +47,6 @@ public class ${entityName} implements Serializable {
 </#list>
     public void create() {
         this.setCreateTime(DateUtils.getCurrentDateTime());
-        this.setUpdateTime(DateUtils.getCurrentDateTime());
-    }
-
-    public void enable(){
-        this.setStatus(Status.ENABLE.getCode());
-        this.setUpdateTime(DateUtils.getCurrentDateTime());
-    }
-
-    public void disable(){
-        this.setStatus(Status.DISABLE.getCode());
         this.setUpdateTime(DateUtils.getCurrentDateTime());
     }
 }
