@@ -55,7 +55,6 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 			Assert.notNull(${objectName}, "对象不能为空");
 			AssertUlit.isEmpty(${objectName}.getId(), "id不能为空");
 			${objectName}.create();
-			${objectName}.enable();
 			this.${objectName}Mapper.insertSelective(${objectName});
 			return ${objectName}.getId();
 		} catch (Exception e) {
@@ -68,7 +67,9 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 		try {
 			AssertUlit.isEmpty(${objectName}.getId(), "id不能为空");
 			${entityName} record = this.${objectName}Mapper.selectByPrimaryKey(${objectName}.getId());
-			Assert.notNull(record, "对象为空,无法修改");
+			if (record == null) {
+				throw new ApplicationException("对象不存在，无法修改");
+			}
 			${objectName}.setUpdateTime(DateUtils.getCurrentDateTime());
 			this.${objectName}Mapper.updateByPrimaryKeySelective(${objectName});
 			return ${objectName}.getId();
@@ -89,7 +90,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 
 	@Override
 	public Page<${entityName}> find${entityName}BySearch(${entityName}VO vo) {
-		// TODO Auto-generated method stub
+		// TODO 需要补全条件
 		try {
 			Page<${entityName}> result = new Page<>();
 			MyBatisCriteria example = new MyBatisCriteria();
