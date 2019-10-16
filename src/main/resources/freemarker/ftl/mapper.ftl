@@ -59,7 +59,7 @@
 			</if>
 			</#list>
 		</set>
-		where id = ${r'#{'}id,jdbcType=${idJdbcType}}
+		where id = ${r'#{'}id,jdbcType=${idJdbcType?upper_case}}
 	</update>
 
 	<!-- 组合条件查询 -->
