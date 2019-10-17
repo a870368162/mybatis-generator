@@ -1,15 +1,11 @@
 package com.github.mybatis.fl.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.github.mybatis.fl.entity.BasisInfo;
 import com.github.mybatis.fl.entity.PropertyInfo;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Copyright: Copyright (c) 2019
@@ -46,6 +42,8 @@ public class EntityInfoUtil {
                     ci.setJdbcType("Integer");
                 } else if (jdbcType.equalsIgnoreCase("datetime")) {
                     ci.setJdbcType("timestamp");
+                }else if (jdbcType.equalsIgnoreCase("json")) {
+                    ci.setJdbcType("char");
                 } else {
                     ci.setJdbcType(jdbcType);
                 }

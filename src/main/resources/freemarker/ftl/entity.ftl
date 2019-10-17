@@ -41,7 +41,7 @@ public class ${entityName} implements Serializable {
     @JSONField(format = DateUtils.DATE_TIME_FORMAT)
 	</#if>
 	</#if>
-	@ApiModelProperty(name = "${ci.property}" , value = "${ci.comment}")
+	@ApiModelProperty("${ci.comment}")
 	private ${ci.javaType} ${ci.property};
 
 </#list>
