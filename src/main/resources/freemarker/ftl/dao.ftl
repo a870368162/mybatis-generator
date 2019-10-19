@@ -47,14 +47,6 @@ public interface ${entityName}Mapper {
 	int updateByPrimaryKeySelective(${entityName} ${objectName});
 
     /**
-     * 条件查询${entityComment}对象
-     *
-     * @param   ${objectName}：${entityComment}对象
-     * @return  ${entityComment}对象的集合
-     */
-	List<${entityName}> query${entityName}List(${entityName} ${objectName});
-
-    /**
      * 条件查询${entityComment}记录数
      *
      * @param   example：MyBatisCriteria查询条件
