@@ -1,6 +1,6 @@
 package ${serviceImplUrl};
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import ${entityUrl}.${entityName};
@@ -26,11 +26,11 @@ import com.base.common.exceptions.ApplicationException;
  */
 @Service
 public class ${entityName}ServiceImpl implements ${entityName}Service {
-	
-	@Autowired
+
+	@Resource
 	private ${entityName}Mapper ${objectName}Mapper;
 
-	@Autowired
+	@Resource
 	private SerialClient serialClient;
 
 	@Override

@@ -1,6 +1,6 @@
 package ${controllerUrl};
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,8 +30,8 @@ import com.base.common.pagination.Page;
 @RestController
 @Slf4j
 public class ${entityName}Controller {
-	
-	@Autowired
+
+	@Resource
 	private ${entityName}Service ${objectName}Service;
 
 

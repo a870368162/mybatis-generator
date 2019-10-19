@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Builder;
@@ -20,6 +21,7 @@ import com.alibaba.fastjson.annotation.JSONField;
  * @author  ${author}
  * @create	${createTime}
  */
+@ApiModel
 @Data
 @Builder
 @AllArgsConstructor
