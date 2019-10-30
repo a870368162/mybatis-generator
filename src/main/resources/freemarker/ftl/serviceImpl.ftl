@@ -10,7 +10,7 @@ import ${serviceUrl}.${entityName}Service;
 import com.base.common.utils.NumberUtils;
 import com.base.common.utils.StringUtils;
 import org.springframework.util.Assert;
-import com.base.common.utils.AssertUlit;
+import com.base.common.utils.AssertUtils;
 import com.base.common.utils.DateUtils;
 import com.usf.common.feign.SerialClient;
 import com.base.common.mybatis.MyBatisCriteria;
@@ -53,7 +53,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 	public Long insert${entityName}(${entityName} ${objectName}) {
 		try {
 			Assert.notNull(${objectName}, "${entityComment}对象不能为空");
-			AssertUlit.isEmpty(${objectName}.getId(), "${entityComment}id不能为空");
+			AssertUtils.isEmpty(${objectName}.getId(), "${entityComment}id不能为空");
 			${objectName}.create();
 			this.${objectName}Mapper.insertSelective(${objectName});
 			return ${objectName}.getId();
@@ -65,7 +65,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 	@Override
 	public Long update${entityName}(${entityName} ${objectName}) {
 		try {
-			AssertUlit.isEmpty(${objectName}.getId(), "${entityComment}id不能为空");
+			AssertUtils.isEmpty(${objectName}.getId(), "${entityComment}id不能为空");
 			${entityName} record = this.${objectName}Mapper.selectByPrimaryKey(${objectName}.getId());
 			if (record == null) {
 				throw new ApplicationException("${entityComment}对象不存在，无法修改");
@@ -81,7 +81,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 	@Override
 	public ${entityName} get${entityName}ById(${idType} id) {
 		try {
-			AssertUlit.isEmpty(id, "${entityComment}id不能为空");
+			AssertUtils.isEmpty(id, "${entityComment}id不能为空");
 			return ${objectName}Mapper.selectByPrimaryKey(id);
 		} catch (Exception e) {
 			throw new ApplicationException(e);
