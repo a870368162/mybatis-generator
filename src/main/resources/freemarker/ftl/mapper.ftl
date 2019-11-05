@@ -52,7 +52,7 @@
 	<select id="countByExample"
 			parameterType="com.base.common.mybatis.MyBatisCriteria"
 			resultType="java.lang.Long">
-		select count(id) from ${table}
+		select count(*) from ${table}
 		<if test="_parameter != null">
 			<include refid="Example_Where_Clause" />
 		</if>
