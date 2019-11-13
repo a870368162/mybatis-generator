@@ -53,8 +53,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 	@Override
 	public Long insert${entityName}(${entityName} ${objectName}) {
 		try {
-			Assert.notNull(${objectName}, "${entityComment}对象不能为空");
-			AssertUtils.isEmpty(${objectName}.getId(), "${entityComment}id不能为空");
+			${objectName}.insertIsEmpty();
 			${objectName}.create();
 			this.${objectName}Mapper.insertSelective(${objectName});
 			return ${objectName}.getId();
@@ -92,14 +91,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 		// TODO 需要补全条件
 		try {
 			Page<${entityName}> result = new Page<>();
-			MyBatisCriteria example = new MyBatisCriteria();
-			Criteria criteria = example.createCriteria();
-			if (StringUtils.isNotEmpty(vo.getSort()) && StringUtils.isNotEmpty(vo.getOrder())) {
-				example.setOrderByClause(vo.getSort(), vo.getOrder());
-			} else {
-				example.setOrderByClause("create_time desc");
-			}
-			example.gotoPaging(vo.getPagination(), vo.getRows());
+			MyBatisCriteria example = vo.queryBuilder();
 			long total = this.${objectName}Mapper.countByExample(example);
 			if(total > 0){
 				result.setRows(this.${objectName}Mapper.selectByExample(example));

@@ -59,7 +59,7 @@ public class ${entityName}Controller {
 			@RequestParam(value = "status", required = false) Byte status) {
 		try {
 			${entityName} ${objectName} = ${entityName}.builder().id(id).status(status).updateTime(DateUtils.getCurrentDateTime()).build();
-			this.${objectName}Service.update${entityName}Status(afterSale);
+			this.${objectName}Service.update${entityName}Status(${objectName});
 			return JSONObject.toJSONString(SingleResult.createSuccessResult());
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);

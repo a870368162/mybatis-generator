@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import com.base.common.utils.DateUtils;
 import java.math.BigDecimal;
 import com.alibaba.fastjson.annotation.JSONField;
+import com.base.common.utils.AssertUtils;
 
 /**
  * ${entityComment}实体类
@@ -47,6 +48,15 @@ public class ${entityName} implements Serializable {
 	private ${ci.javaType} ${ci.property};
 
 </#list>
+
+    public void insertIsEmpty(){
+<#list cis as ci>
+    <#if ci.javaType=="Long">
+        AssertUtils.isEmpty(${ci.property}, "${ci.comment}不能为空");
+    </#if>
+</#list>
+    }
+
     public void create() {
         this.setCreateTime(DateUtils.getCurrentDateTime());
         this.setUpdateTime(DateUtils.getCurrentDateTime());
