@@ -17,6 +17,7 @@ import com.base.common.mybatis.MyBatisCriteria;
 import com.base.common.mybatis.MyBatisCriteria.Criteria;
 import com.base.common.pagination.Page;
 import com.base.common.exceptions.ApplicationException;
+import org.springframework.util.Assert;
 
 /**
  * ${entityComment}——SERVICEIMPL层
@@ -67,9 +68,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 		try {
 			AssertUtils.isEmpty(${objectName}.getId(), "${entityComment}id不能为空");
 			${entityName} record = this.${objectName}Mapper.selectByPrimaryKey(${objectName}.getId());
-			if (record == null) {
-				throw new ApplicationException("${entityComment}对象不存在，无法修改");
-			}
+			Assert.notNull(record,"售后的类型信息对象不存在，无法修改");
 			${objectName}.setUpdateTime(DateUtils.getCurrentDateTime());
 			this.${objectName}Mapper.updateByPrimaryKeySelective(${objectName});
 			return ${objectName}.getId();
