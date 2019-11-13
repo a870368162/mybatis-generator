@@ -50,4 +50,15 @@ public interface ${entityName}Service {
 	 * @return  ${entityComment}的分页集合
 	 */
 	Page<${entityName}> find${entityName}BySearch(${entityName}VO vo);
+
+	/**
+	 * 更新状态
+	 *
+	 * @create by: zxf
+	 * @create time: 2019/11/12 20:18
+	 *
+	 * @param ${objectName}：${entityComment}对象
+	 * @return java.lang.Long
+	 */
+	Long update${entityName}Status(${entityName} ${objectName});
 }

@@ -14,5 +14,5 @@ import com.base.common.pagination.PaginationBasicVO;
 @Getter
 public class ${entityName}VO extends PaginationBasicVO {
 
-    private String name;
+    private Long id;
 }

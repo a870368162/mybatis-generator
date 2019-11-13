@@ -112,4 +112,18 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 		}
 	}
 
+	@Override
+	public Long update${entityName}Status(${entityName} ${objectName}) {
+		try {
+			AssertUtils.isEmpty(${objectName}.getId(), "id不能为空");
+			AssertUtils.isEmpty(${objectName}.getStatus(), "状态不能为空");
+			${entityName} record = this.${objectName}Mapper.selectByPrimaryKey(${objectName}.getId());
+			Assert.notNull(record, "对象不存在无法修改");
+			this.${objectName}Mapper.updateByPrimaryKeySelective(${objectName});
+			return record.getId();
+		} catch (Exception e) {
+			throw new ApplicationException(e);
+		}
+	}
+
 }

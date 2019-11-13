@@ -19,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.base.common.utils.json.SingleResult;
 import com.alibaba.fastjson.JSONObject;
 import com.base.common.pagination.Page;
+import com.base.common.utils.DateUtils;
 
 /**
  * ${entityComment}接口层
@@ -48,6 +49,25 @@ public class ${entityName}Controller {
 	}
 
 
+	@PutMapping("/${objectName}/status")
+	@ApiOperation(value = "修改状态", notes = "状态，0停用，1启用，2回收，8冻结，9违规停用")
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "id", value = "id", dataType = "Long"),
+			@ApiImplicitParam(name = "status", value = "状态", dataType = "Byte")})
+	public String update${entityName}Status(
+			@RequestParam(value = "id", required = false) Long id,
+			@RequestParam(value = "status", required = false) Byte status) {
+		try {
+			${entityName} ${objectName} = ${entityName}.builder().id(id).status(status).updateTime(DateUtils.getCurrentDateTime()).build();
+			this.${objectName}Service.update${entityName}Status(afterSale);
+			return JSONObject.toJSONString(SingleResult.createSuccessResult());
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			return JSONObject.toJSONString(SingleResult.createFailedResult(e.getMessage()));
+		}
+	}
+
+
 	@GetMapping("/${objectName}/{id}")
 	@ApiOperation(value = "获取${entityComment}信息", notes = "获取${entityComment}信息[${objectName}]")
 	@ApiImplicitParam(name = "id", value = "${entityComment}id", required = true, dataType = "${idType}")
@@ -65,10 +85,10 @@ public class ${entityName}Controller {
 	@GetMapping("/${objectName}")
 	@ApiOperation(value = "分页查询", notes = "分页查询返回对象[PageInfo<${entityName}>]")
 	@ApiImplicitParams({
-        @ApiImplicitParam(name = "page", value = "当前页", dataType = "int"),
-        @ApiImplicitParam(name = "rows", value = "页行数", dataType = "int"),
-		@ApiImplicitParam(name = "sort", value = "排序规则", dataType = "String"),
-		@ApiImplicitParam(name = "order", value = "排序名称", dataType = "String")
+        	@ApiImplicitParam(name = "page", value = "当前页", dataType = "int"),
+        	@ApiImplicitParam(name = "rows", value = "页行数", dataType = "int"),
+			@ApiImplicitParam(name = "sort", value = "排序规则", dataType = "String"),
+			@ApiImplicitParam(name = "order", value = "排序名称", dataType = "String")
     })
 	public String find${entityName}BySearch(
 			@RequestParam(value = "page", required = false) Integer page,
