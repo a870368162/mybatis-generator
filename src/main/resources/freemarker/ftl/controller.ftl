@@ -50,7 +50,7 @@ public class ${entityName}Controller {
 
 
 	@PutMapping("/${objectName}/status")
-	@ApiOperation(value = "修改状态", notes = "状态，0停用，1启用，2回收，8冻结，9违规停用")
+	@ApiOperation(value = "修改状态", notes = "状态: 0停用, 1启用, 2回收, 8冻结, 9违规停用")
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "id", value = "id", dataType = "Long"),
 			@ApiImplicitParam(name = "status", value = "状态", dataType = "Byte")})
@@ -69,9 +69,9 @@ public class ${entityName}Controller {
 
 
 	@GetMapping("/${objectName}/{id}")
-	@ApiOperation(value = "获取${entityComment}信息", notes = "获取${entityComment}信息[${objectName}]")
+	@ApiOperation(value = "根据id获取${entityComment}", notes = "返回[${objectName}]")
 	@ApiImplicitParam(name = "id", value = "${entityComment}id", required = true, dataType = "${idType}")
-	public String get${entityName}ById(@PathVariable("id")${idType} id){
+	public String get${entityName}ById(@PathVariable("id") ${idType} id){
 		try {
 			${entityName} result=this.${objectName}Service.get${entityName}ById(id);
 			return JSONObject.toJSONString(SingleResult.builder().data(result).build());
@@ -83,7 +83,7 @@ public class ${entityName}Controller {
 
 
 	@GetMapping("/${objectName}")
-	@ApiOperation(value = "分页查询", notes = "分页查询返回对象[PageInfo<${entityName}>]")
+	@ApiOperation(value = "分页查询${entityComment}列表", notes = "返回对象[PageInfo<${entityName}>]")
 	@ApiImplicitParams({
         	@ApiImplicitParam(name = "page", value = "当前页", dataType = "int"),
         	@ApiImplicitParam(name = "rows", value = "页行数", dataType = "int"),

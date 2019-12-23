@@ -7,6 +7,8 @@ import com.base.common.utils.NumberUtils;
 import com.base.common.utils.StringUtils;
 import lombok.Builder;
 import lombok.Getter;
+import java.util.List;
+import org.apache.commons.collections.CollectionUtils;
 
 /**
 * ${entityComment} vo
@@ -18,20 +20,19 @@ import lombok.Getter;
 @Getter
 public class ${entityName}VO extends PaginationBasicVO {
 
-    private Long id;
+    private List<Long> ids;
 
     public MyBatisCriteria queryBuilder() {
         MyBatisCriteria example = new MyBatisCriteria();
         Criteria criteria = example.createCriteria();
-        if (NumberUtils.isNotEmpty(id)) {
-            criteria.andNotEqualTo("id", id);
+        if (CollectionUtils.isNotEmpty(ids)) {
+            criteria.andInLong("id", ids);
         }
         if (StringUtils.isNotEmpty(this.getSort()) && StringUtils.isNotEmpty(this.getOrder())) {
             example.setOrderByClause(this.getSort(), this.getOrder());
         } else {
             example.setOrderByClause("create_time desc");
         }
-        example.gotoPaging(this.getPagination(), this.getRows());
         return example;
     }
 }
