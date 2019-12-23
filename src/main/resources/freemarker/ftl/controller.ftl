@@ -99,7 +99,7 @@ public class ${entityName}Controller {
 			${entityName}VO vo = ${entityName}VO.builder().build();
 			vo.setOrderBy(sort, order);
 			vo.gotoPagination(page, rows);
-			Page<${entityName}> result = this.${objectName}Service.find${entityName}BySearch(vo);
+			Page<${entityName}> result = this.${objectName}Service.find${entityName}PageBySearch(vo);
 			return JSONObject.toJSONString(SingleResult.builder().data(result).build());
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);

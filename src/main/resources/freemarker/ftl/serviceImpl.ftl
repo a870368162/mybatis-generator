@@ -18,7 +18,6 @@ import com.base.common.mybatis.MyBatisCriteria.Criteria;
 import com.base.common.pagination.Page;
 import com.base.common.exceptions.ApplicationException;
 import org.springframework.util.Assert;
-import java.util.List;
 
 /**
  * ${entityComment}——SERVICEIMPL层
@@ -37,8 +36,8 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 
 	@Override
 	public Long saveOrUpdate(${entityName} ${objectName}) {
-		Assert.notNull(${objectName}, "${entityComment}对象不能为空");
 		try {
+			Assert.notNull(${objectName}, "${entityComment}对象不能为空");
 			if(NumberUtils.isEmpty(${objectName}.getId())){
 				${objectName}.setId(serialClient.getGlobalSerial());
 				this.insert${entityName}(${objectName});
@@ -65,8 +64,8 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 
 	@Override
 	public Long update${entityName}(${entityName} ${objectName}) {
-		AssertUtils.isEmpty(${objectName}.getId(), "${entityComment}id不能为空");
 		try {
+			AssertUtils.isEmpty(${objectName}.getId(), "${entityComment}id不能为空");
 			${entityName} record = this.${objectName}Mapper.selectByPrimaryKey(${objectName}.getId());
 			Assert.notNull(record,"售后的类型信息对象不存在，无法修改");
 			${objectName}.setUpdateTime(DateUtils.getCurrentDateTime());
@@ -78,34 +77,9 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 	}
 
 	@Override
-	public Long update${entityName}Status(${entityName} ${objectName}) {
-		AssertUtils.isEmpty(${objectName}.getId(), "id不能为空");
-		AssertUtils.isEmpty(${objectName}.getStatus(), "状态不能为空");
-		try {
-			${entityName} record = this.${objectName}Mapper.selectByPrimaryKey(${objectName}.getId());
-			Assert.notNull(record, "对象不存在无法修改");
-			this.${objectName}Mapper.updateByPrimaryKeySelective(${objectName});
-			return record.getId();
-		} catch (Exception e) {
-			throw new ApplicationException(e);
-		}
-	}
-
-	@Override
-	public Long delete${entityName}ById(${idType} id) {
-		AssertUtils.isEmpty(id, "${entityComment}id不能为空");
-		try {
-			this.${objectName}Mapper.deleteByPrimaryKey(${idType} id);
-			return id;
-		} catch (Exception e) {
-			throw new ApplicationException(e);
-		}
-	}
-
-	@Override
 	public ${entityName} get${entityName}ById(${idType} id) {
-		AssertUtils.isEmpty(id, "${entityComment}id不能为空");
 		try {
+			AssertUtils.isEmpty(id, "${entityComment}id不能为空");
 			return ${objectName}Mapper.selectByPrimaryKey(id);
 		} catch (Exception e) {
 			throw new ApplicationException(e);
@@ -113,27 +87,31 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 	}
 
 	@Override
-	public List<${entityName}> find${entityName}BySearch(${entityName}VO vo) {
-		MyBatisCriteria example = vo.queryBuilder();
+	public Page<${entityName}> find${entityName}BySearch(${entityName}VO vo) {
+		// TODO 需要补全条件
 		try {
-			return this.${objectName}Mapper.selectByExample(example));
-		} catch (Exception e) {
-			throw new ApplicationException(e);
-		}
-	}
-
-	@Override
-	public Page<${entityName}> find${entityName}PageBySearch(${entityName}VO vo) {
-		Page<${entityName}> result = new Page<>();
-		MyBatisCriteria example = vo.queryBuilder();
-		example.gotoPaging(this.getPagination(), this.getRows());
-		try {
+			Page<${entityName}> result = new Page<>();
+			MyBatisCriteria example = vo.queryBuilder();
 			long total = this.${objectName}Mapper.countByExample(example);
 			if(total > 0){
 				result.setRows(this.${objectName}Mapper.selectByExample(example));
 			}
 			result.setTotal(total);
 			return result;
+		} catch (Exception e) {
+			throw new ApplicationException(e);
+		}
+	}
+
+	@Override
+	public Long update${entityName}Status(${entityName} ${objectName}) {
+		try {
+			AssertUtils.isEmpty(${objectName}.getId(), "id不能为空");
+			AssertUtils.isEmpty(${objectName}.getStatus(), "状态不能为空");
+			${entityName} record = this.${objectName}Mapper.selectByPrimaryKey(${objectName}.getId());
+			Assert.notNull(record, "对象不存在无法修改");
+			this.${objectName}Mapper.updateByPrimaryKeySelective(${objectName});
+			return record.getId();
 		} catch (Exception e) {
 			throw new ApplicationException(e);
 		}
