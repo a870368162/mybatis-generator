@@ -8,7 +8,7 @@ import com.base.common.utils.StringUtils;
 import lombok.Builder;
 import lombok.Getter;
 import java.util.List;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 
 /**
 * ${entityComment} vo

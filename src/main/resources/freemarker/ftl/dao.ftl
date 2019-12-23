@@ -15,33 +15,33 @@ import org.springframework.stereotype.Component;
 public interface ${entityName}Mapper {
 
     /**
-     * 根据id查询${entityComment}对象
+     * 根据id查询${entityComment}
      *
-     * @param   id：${entityComment}对象的id
-     * @return  ${entityComment}对象
+     * @param   id：${entityComment}的id
+     * @return  ${entityComment}
      */
 	${entityName} selectByPrimaryKey(${idType} id);
 
     /**
-     * 根据id删除${entityComment}对象
+     * 根据id删除${entityComment}
      *
-     * @param   id：${entityComment}对象id
+     * @param   id：${entityComment}的id
      * @return  删除条数
      */
 	int deleteByPrimaryKey(${idType} id);
 
     /**
-     * 新增${entityComment}对象
+     * 新增${entityComment}
      *
-     * @param   ${objectName}：${entityComment}对象
+     * @param   ${objectName}：${entityComment}
      * @return  新增的条数
      */
 	int insertSelective(${entityName} ${objectName});
 
     /**
-     * 根据id修改${entityComment}对象
+     * 根据id修改${entityComment}
      *
-     * @param   ${objectName}：${entityComment}对象
+     * @param   ${objectName}：${entityComment}
      * @return  修改的条数
      */
 	int updateByPrimaryKeySelective(${entityName} ${objectName});

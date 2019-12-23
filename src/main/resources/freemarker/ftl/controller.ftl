@@ -83,7 +83,7 @@ public class ${entityName}Controller {
 
 
 	@GetMapping("/${objectName}")
-	@ApiOperation(value = "分页查询${entityComment}列表", notes = "返回对象[PageInfo<${entityName}>]")
+	@ApiOperation(value = "分页查询${entityComment}列表", notes = "返回分页对象[Page<${entityName}>]")
 	@ApiImplicitParams({
         	@ApiImplicitParam(name = "page", value = "当前页", dataType = "int"),
         	@ApiImplicitParam(name = "rows", value = "页行数", dataType = "int"),
