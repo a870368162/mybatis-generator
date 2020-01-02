@@ -34,13 +34,10 @@ public class ${entityName} implements Serializable {
 <#list cis as ci>
 	<#if ci.javaType=="Date">
 	<#if ci.jdbcType=="date">
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateUtils.DATE_TIME_FORMAT, timezone = "GMT+8")
     @JSONField(format = DateUtils.DATE_TIME_FORMAT)
     <#elseif ci.jdbcType=="time">
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateUtils.DATE_TIME_FORMAT, timezone = "GMT+8")
     @JSONField(format = DateUtils.DATE_TIME_FORMAT)
 	<#else>
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateUtils.DATE_TIME_FORMAT, timezone = "GMT+8")
     @JSONField(format = DateUtils.DATE_TIME_FORMAT)
 	</#if>
 	</#if>
