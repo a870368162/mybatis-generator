@@ -127,6 +127,7 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
 		// TODO 需要补全条件
 		Page<${entityName}> result = new Page<>();
 		MyBatisCriteria example = vo.queryBuilder();
+		example.gotoPaging(vo.getPagination(), vo.getRows());
 		try {
 			long total = this.${objectName}Mapper.countByExample(example);
 			if(total > 0){
